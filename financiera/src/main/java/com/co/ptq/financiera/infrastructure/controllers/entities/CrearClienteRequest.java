@@ -3,6 +3,7 @@ package com.co.ptq.financiera.infrastructure.controllers.entities;
 import java.time.LocalDate;
 
 public class CrearClienteRequest {
+
 	private Long id;
 	private String tipoId;
 	private String numId;
@@ -20,6 +21,9 @@ public class CrearClienteRequest {
 		this.apellidos = apellidos;
 		this.correo = correo;
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public CrearClienteRequest() {
 	}
 
 	public Long getId() {

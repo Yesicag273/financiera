@@ -71,7 +71,8 @@ public class TransaccionService implements TransaccionUseCase {
 		cuentaDestino.setSaldo(cuentaDestino.getSaldo().add(monto));
 		cuentaPort.actualizarCuenta(cuentaOrigen);
 		cuentaPort.actualizarCuenta(cuentaDestino);
-		Transaccion transaccion = crearTransaccion(cuentaOrigen, cuentaDestino, monto, TipoTransaccion.TRANSFERENCIA);
+		Transaccion transaccion = new Transaccion();
+		transaccion = crearTransaccion(cuentaOrigen, cuentaDestino, monto, TipoTransaccion.TRANSFERENCIA);
 		// Transacción de entrada para la cuenta destino
 		crearTransaccion(cuentaDestino, cuentaOrigen, monto, TipoTransaccion.TRANSFERENCIA_ENTRANTE);
 		return transaccion;

@@ -65,6 +65,9 @@ public class Cuenta {
 		this.cliente = cliente;
 	}
 
+	public Cuenta() {
+	}
+
 	public Long getId() {
 		return id;
 	}

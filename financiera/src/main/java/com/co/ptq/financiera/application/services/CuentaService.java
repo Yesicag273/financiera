@@ -35,6 +35,7 @@ public class CuentaService implements CuentaUseCase {
 			throw new ResourceNotFoundException("Cliente no encontrado");
 		}
 
+		cuenta.setId(clienteId);
 		cuenta.setCliente(cliente);
 		cuenta.setNumCuenta(generarNumeroCuenta(cuenta.getTipoCuenta()));
 		cuenta.setEstado(EstadoCuenta.ACTIVA); // Por defecto, las cuentas de ahorro se crean activas

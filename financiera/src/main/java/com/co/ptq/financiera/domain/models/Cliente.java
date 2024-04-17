@@ -13,8 +13,6 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
 
-import com.co.ptq.financiera.exceptions.BusinessException;
-
 @Entity
 @Table(name = "clientes")
 public class Cliente {
@@ -129,9 +127,6 @@ public class Cliente {
 	}
 
 	public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
-		if (calcularEdad(fechaNacimiento) < 18) {
-			throw new BusinessException("El cliente debe ser mayor de edad");
-		}
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
@@ -149,11 +144,5 @@ public class Cliente {
 
 	public void setFechaModificacion(LocalDateTime localDateTime) {
 		this.fechaModificacion = localDateTime;
-	}
-
-	// Lógica para calcular la edad
-	private int calcularEdad(LocalDateTime fechaNacimiento) {
-		// ...
-		return 0;
 	}
 }

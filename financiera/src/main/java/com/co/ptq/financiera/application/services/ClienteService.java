@@ -27,6 +27,11 @@ public class ClienteService implements ClienteUseCase {
 		this.cuentaPort = cuentaPort;
 	}
 
+	public ClienteService(ClientePort clientePort) {
+		this.clientePort = clientePort;
+		this.cuentaPort = null;
+	}
+
 	@Override
 	public Cliente registrarCliente(Cliente cliente) {
 		validarEdad(cliente.getFechaNacimiento());
@@ -75,7 +80,7 @@ public class ClienteService implements ClienteUseCase {
 
 		int edad = Period.between(fechaNacimiento.toLocalDate(), fechaActual).getYears();
 		if (edad < 18) {
-			throw new IllegalArgumentException("El usuario debe ser mayor de edad.");
+			throw new BusinessException ("El usuario debe ser mayor de edad.");
 		}
 	}
 
@@ -88,7 +93,7 @@ public class ClienteService implements ClienteUseCase {
 
 		// Verificar si el email coincide con el formato esperado
 		if (!matcher.matches()) {
-			throw new IllegalArgumentException("El formato del correo electrónico no es válido.");
+			throw new BusinessException("El formato del correo electrónico no es válido.");
 		}
 	}
 
@@ -98,13 +103,13 @@ public class ClienteService implements ClienteUseCase {
 
 		// Validar longitud mínima para nombres
 		if (nombres.length() < longitudMinima) {
-			throw new IllegalArgumentException(
+			throw new BusinessException(
 					"La longitud de los nombres debe ser al menos " + longitudMinima + " caracteres.");
 		}
 
 		// Validar longitud mínima para apellido
 		if (apellido.length() < longitudMinima) {
-			throw new IllegalArgumentException(
+			throw new BusinessException(
 					"La longitud del apellido debe ser al menos " + longitudMinima + " caracteres.");
 		}
 	}
@@ -115,7 +120,7 @@ public class ClienteService implements ClienteUseCase {
 
 	@Override
 	public List<Cliente> obtenerClientes() {
-		return clientePort.consultarClientes(); 
+		return clientePort.consultarClientes();
 	}
 
 }
