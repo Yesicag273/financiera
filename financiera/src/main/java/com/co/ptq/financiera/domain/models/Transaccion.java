@@ -22,6 +22,10 @@ public class Transaccion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idDestino;
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private TipoTransaccion tipoTransaccion;
@@ -40,10 +44,10 @@ public class Transaccion {
 	@JoinColumn(name = "cuenta_destino_id")
 	private Cuenta cuentaDestino;
 
-	public Transaccion(Long id, TipoTransaccion tipoTransaccion, BigDecimal monto, LocalDateTime fecha,
+	public Transaccion(Long id, Long idDestino, TipoTransaccion tipoTransaccion, BigDecimal monto, LocalDateTime fecha,
 			Cuenta cuentaOrigen, Cuenta cuentaDestino) {
-		super();
 		this.id = id;
+		this.idDestino = idDestino;
 		this.tipoTransaccion = tipoTransaccion;
 		this.monto = monto;
 		this.fecha = fecha;
@@ -100,6 +104,18 @@ public class Transaccion {
 
 	public void setCuentaDestino(Cuenta cuentaDestino) {
 		this.cuentaDestino = cuentaDestino;
+	}
+
+	public TipoTransaccion getTipoTransaccion() {
+		return tipoTransaccion;
+	}
+
+	public Long getIdDestino() {
+		return idDestino;
+	}
+
+	public void setIdDestino(Long idDestino) {
+		this.idDestino = idDestino;
 	}
 
 }

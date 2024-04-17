@@ -1,5 +1,7 @@
 package com.co.ptq.financiera.infrastructure.adapters;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.co.ptq.financiera.domain.models.Cliente;
@@ -33,6 +35,11 @@ public class ClienteJpaAdapter implements ClientePort {
 	@Override
 	public Cliente obtenerClientePorId(Long id) {
 		return clienteRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public List<Cliente> consultarClientes() {
+		return clienteRepository.findAll();
 	}
 
 }

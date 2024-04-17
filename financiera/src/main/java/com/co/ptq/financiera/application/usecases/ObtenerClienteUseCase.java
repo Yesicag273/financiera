@@ -18,9 +18,4 @@ public class ObtenerClienteUseCase {
         // Buscar el cliente por ID
         return clienteService.obtenerClientePorId(id);
     }
-
-    // Opcional: Puedes agregar otros métodos para obtener clientes por diferentes criterios, como:
-    // public List<Cliente> obtenerClientesPorNombre(String nombre) { ... }
-    // public List<Cliente> obtenerClientesPorApellido(String apellido) { ... }
-    // etc.
 }

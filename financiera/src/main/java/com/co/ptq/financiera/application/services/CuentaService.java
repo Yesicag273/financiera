@@ -3,6 +3,7 @@ package com.co.ptq.financiera.application.services;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
@@ -49,8 +50,6 @@ public class CuentaService implements CuentaUseCase {
 		}
 
 		// Actualizar los campos permitidos del cuentaExistente
-		// (puedes agregar validaciones aquí si es necesario)
-
 		cuentaExistente.setFechaModificacion(LocalDateTime.now());
 
 		return cuentaPort.actualizarCuenta(cuentaExistente);
@@ -98,25 +97,27 @@ public class CuentaService implements CuentaUseCase {
 		return cuenta;
 	}
 
-	// ... otros métodos para consultar cuentas
-
 	private String generarNumeroCuenta(TipoCuenta tipoCuenta) {
 		String prefijo = (tipoCuenta == TipoCuenta.AHORRO) ? "53" : "33";
 		// Lógica para generar 7 dígitos aleatorios
-		String digitosAleatorios = "..."; // Implementar la generación de números aleatorios
+		Random random = new Random();
+		StringBuilder digitosAleatoriosBuilder = new StringBuilder();
+		for (int i = 0; i < 7; i++) {
+			// Genera un número aleatorio entre 0 y 9
+			digitosAleatoriosBuilder.append(random.nextInt(10));
+		}
+		String digitosAleatorios = digitosAleatoriosBuilder.toString();
+
 		return prefijo + digitosAleatorios;
 	}
-//////////////////////////////////
 
 	@Override
 	public void eliminarCuenta(Long id) {
-		// TODO Auto-generated method stub
-
+		cuentaPort.eliminarCuenta(id);
 	}
 
 	@Override
 	public List<Cuenta> obtenerCuentasPorCliente(Long clienteId) {
-		// TODO Auto-generated method stub
-		return null;
+		return cuentaPort.cuentasPorCliente(clienteId);
 	}
 }

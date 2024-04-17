@@ -54,7 +54,6 @@ public class Cuenta {
 
 	public Cuenta(Long id, TipoCuenta tipoCuenta, String numCuenta, EstadoCuenta estado, BigDecimal saldo,
 			boolean exentaGMF, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion, Cliente cliente) {
-		super();
 		this.id = id;
 		this.tipoCuenta = tipoCuenta;
 		this.numCuenta = numCuenta;

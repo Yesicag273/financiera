@@ -2,7 +2,6 @@ package com.co.ptq.financiera.infrastructure.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,11 +27,4 @@ public class CuentaController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(nuevaCuenta);
 	}
 
-
-	@DeleteMapping("/{cuentaId}")
-	public ResponseEntity<Void> eliminarCuenta(@PathVariable Long clienteId, @PathVariable Long cuentaId) {
-		// Implementar la lógica para eliminar una cuenta usando eliminarCuentaUseCase
-		// ...
-		return ResponseEntity.noContent().build(); // Reemplazar con la lógica de eliminación
-	}
 }

@@ -15,13 +15,13 @@ public class ActualizarClienteUseCase {
     }
 
     public Cliente actualizarCliente(Long id, Cliente clienteActualizado) {
-        // Buscar el cliente existente
-        Cliente clienteExistente = clienteService.obtenerClientePorId(id);
 
-        // Actualizar los campos del cliente (puedes agregar validaciones aquí si es necesario)
+    	Cliente clienteExistente = clienteService.obtenerClientePorId(id);
+
         clienteExistente.setNombres(clienteActualizado.getNombres());
         clienteExistente.setApellidos(clienteActualizado.getApellidos());
-        // ... Actualizar otros campos
+        clienteExistente.setCorreo(clienteActualizado.getCorreo());
+        clienteExistente.setFechaNacimiento(clienteActualizado.getFechaNacimiento());
 
         // Llamar al servicio para actualizar el cliente en la base de datos
         return clienteService.actualizarCliente(id, clienteExistente);

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.co.ptq.financiera.application.services.ClienteService;
 import com.co.ptq.financiera.domain.models.Cliente;
+import com.co.ptq.financiera.infrastructure.controllers.entities.CrearClienteRequest;
 
 @Component
 public class RegistrarClienteUseCase {
@@ -14,12 +15,21 @@ public class RegistrarClienteUseCase {
 		this.clienteService = clienteService;
 	}
 
-	public Cliente registrarCliente(Cliente cliente) {
-		// Validaciones (Opcional: Puedes realizar validaciones adicionales aquí)
-		// ...
+	public Cliente registrarCliente(CrearClienteRequest request) {
 
-		Cliente nuevoCliente = clienteService.registrarCliente(cliente);
+		if (request.getNombres() == null || request.getNombres().isEmpty()) {
+			throw new IllegalArgumentException("El nombre del cliente es obligatorio.");
+		}
+		if (request.getApellidos() == null || request.getApellidos().isEmpty()) {
+			throw new IllegalArgumentException("El Apellido del cliente es obligatorio.");
+		}
 
-		return nuevoCliente;
+		Cliente nuevoCliente = new Cliente();
+		nuevoCliente.setNombres(request.getNombres());
+		nuevoCliente.setApellidos(request.getApellidos());
+
+		Cliente clienteRegistrado = clienteService.registrarCliente(nuevoCliente);
+
+		return clienteRegistrado;
 	}
 }

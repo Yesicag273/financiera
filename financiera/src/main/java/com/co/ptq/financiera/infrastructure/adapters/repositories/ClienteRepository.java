@@ -7,6 +7,6 @@ import com.co.ptq.financiera.domain.models.Cliente;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
-	
+
 	Cliente findByNumIdentificacion(String numIdentificacion);
 }

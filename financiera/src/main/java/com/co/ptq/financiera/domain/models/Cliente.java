@@ -19,6 +19,9 @@ import com.co.ptq.financiera.exceptions.BusinessException;
 @Table(name = "clientes")
 public class Cliente {
 
+	public Cliente() {
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -51,8 +54,8 @@ public class Cliente {
 	private List<Cuenta> cuentas;
 
 	public Cliente(Long id, String tipoId, String numId, String nombres, String apellidos, String correo,
-			LocalDateTime fechaNacimiento, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion) {
-		super();
+			LocalDateTime fechaNacimiento, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion,
+			List<Cuenta> cuentas) {
 		this.id = id;
 		this.tipoId = tipoId;
 		this.numId = numId;
@@ -62,6 +65,15 @@ public class Cliente {
 		this.fechaNacimiento = fechaNacimiento;
 		this.fechaCreacion = fechaCreacion;
 		this.fechaModificacion = fechaModificacion;
+		this.cuentas = cuentas;
+	}
+
+	public List<Cuenta> getCuentas() {
+		return cuentas;
+	}
+
+	public void setCuentas(List<Cuenta> cuentas) {
+		this.cuentas = cuentas;
 	}
 
 	public Long getId() {
@@ -140,8 +152,8 @@ public class Cliente {
 	}
 
 	// Lógica para calcular la edad
-    private int calcularEdad(LocalDateTime fechaNacimiento) {
-        // ...
-    	return 0;
-    }
+	private int calcularEdad(LocalDateTime fechaNacimiento) {
+		// ...
+		return 0;
+	}
 }

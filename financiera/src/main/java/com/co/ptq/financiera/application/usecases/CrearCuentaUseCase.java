@@ -15,10 +15,7 @@ public class CrearCuentaUseCase {
 	}
 
 	public Cuenta crearCuenta(Long clienteId, Cuenta cuenta) {
-		// Validaciones (puedes agregar validaciones adicionales aquí si es necesario)
-		// ...
 
-		// Crear la cuenta
 		Cuenta nuevaCuenta = cuentaService.crearCuenta(clienteId, cuenta);
 
 		return nuevaCuenta;

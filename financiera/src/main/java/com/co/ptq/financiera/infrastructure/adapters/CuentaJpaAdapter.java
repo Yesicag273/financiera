@@ -1,5 +1,6 @@
 package com.co.ptq.financiera.infrastructure.adapters;
 
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -10,34 +11,40 @@ import com.co.ptq.financiera.infrastructure.adapters.repositories.CuentaReposito
 @Repository
 public class CuentaJpaAdapter implements CuentaPort {
 
-    private final CuentaRepository cuentaRepository;
+	private final CuentaRepository cuentaRepository;
 
-    public CuentaJpaAdapter(CuentaRepository cuentaRepository) {
-        this.cuentaRepository = cuentaRepository;
-    }
+	public CuentaJpaAdapter(CuentaRepository cuentaRepository) {
+		this.cuentaRepository = cuentaRepository;
+	}
 
 	@Override
 	public Cuenta guardarCuenta(Cuenta cuenta) {
-		// TODO Auto-generated method stub
-		return null;
+		return cuentaRepository.save(cuenta);
 	}
 
 	@Override
 	public Cuenta actualizarCuenta(Cuenta cuenta) {
-		// TODO Auto-generated method stub
-		return null;
+		return cuentaRepository.save(cuenta);
 	}
 
 	@Override
 	public void eliminarCuenta(Long id) {
-		// TODO Auto-generated method stub
-		
+		cuentaRepository.deleteById(id);
 	}
 
 	@Override
 	public Cuenta obtenerCuentaPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return cuentaRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public boolean clienteTieneCuentas(Long idCliente) {
+		return cuentaRepository.existsByClienteId(idCliente);
+	}
+
+	@Override
+	public List<Cuenta> cuentasPorCliente(Long clienteId) {
+		return cuentaRepository.findByClienteId(clienteId);
 	}
 
 }

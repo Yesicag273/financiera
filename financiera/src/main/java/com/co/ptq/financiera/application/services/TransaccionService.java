@@ -13,7 +13,6 @@ import com.co.ptq.financiera.domain.ports.out.CuentaPort;
 import com.co.ptq.financiera.domain.ports.out.TransaccionPort;
 import com.co.ptq.financiera.exceptions.BusinessException;
 import com.co.ptq.financiera.exceptions.ResourceNotFoundException;
-import com.co.ptq.financiera.infrastructure.controllers.entities.TransaccionRequest;
 
 @Service
 public class TransaccionService implements TransaccionUseCase {
@@ -27,17 +26,17 @@ public class TransaccionService implements TransaccionUseCase {
 	}
 
 	@Override
-	public Transaccion realizarTransaccion(TransaccionRequest request) {
+	public Transaccion realizarTransaccion(Transaccion request) {
 		Transaccion transaccion = null;
 		switch (request.getTipoTransaccion()) {
 		case CONSIGNACION:
-			transaccion = crearConsignacion(request.getIdCuenta(), request.getMonto());
+			transaccion = crearConsignacion(request.getId(), request.getMonto());
 			break;
 		case RETIRO:
-			transaccion = crearRetiro(request.getIdCuenta(), request.getMonto());
+			transaccion = crearRetiro(request.getId(), request.getMonto());
 			break;
 		case TRANSFERENCIA:
-			transaccion = crearTransferencia(request.getIdCuenta(), request.getIdCuentaDestino(), request.getMonto());
+			transaccion = crearTransferencia(request.getId(), request.getIdDestino(), request.getMonto());
 			break;
 		default:
 			throw new BusinessException("Tipo de transacción no válido");
@@ -73,7 +72,7 @@ public class TransaccionService implements TransaccionUseCase {
 		cuentaPort.actualizarCuenta(cuentaOrigen);
 		cuentaPort.actualizarCuenta(cuentaDestino);
 		Transaccion transaccion = crearTransaccion(cuentaOrigen, cuentaDestino, monto, TipoTransaccion.TRANSFERENCIA);
-		// (Opcional) Crear una transacción de entrada para la cuenta destino
+		// Transacción de entrada para la cuenta destino
 		crearTransaccion(cuentaDestino, cuentaOrigen, monto, TipoTransaccion.TRANSFERENCIA_ENTRANTE);
 		return transaccion;
 	}

@@ -17,8 +17,6 @@ public class RealizarTransaccionUseCase {
     }
 
 	public Transaccion realizarTransaccion(TransaccionRequest request) {
-        // Validaciones (puedes agregar validaciones adicionales aquí)
-        // ... 
 
         Transaccion transaccion = null;
         switch (request.getTipoTransaccion()) {

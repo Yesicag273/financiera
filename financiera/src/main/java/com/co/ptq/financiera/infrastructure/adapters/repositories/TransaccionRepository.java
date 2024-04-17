@@ -7,5 +7,4 @@ import com.co.ptq.financiera.domain.models.Transaccion;
 
 @Repository
 public interface TransaccionRepository extends JpaRepository<Transaccion, Long> {
-	// Puedes agregar métodos personalizados aquí si es necesario
 }

@@ -5,7 +5,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -28,8 +27,7 @@ public class DatabaseConfig {
 		config.setJdbcUrl(dbUrl);
 		config.setUsername(dbUsername);
 		config.setPassword(dbPassword);
-		// Puedes agregar configuraciones adicionales de HikariCP aquí
-		// ...
+
 		return new HikariDataSource(config);
 	}
 }
