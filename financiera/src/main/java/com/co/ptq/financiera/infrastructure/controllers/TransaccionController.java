@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.co.ptq.financiera.application.usecases.RealizarTransaccionUseCase;
 import com.co.ptq.financiera.domain.models.Transaccion;
 import com.co.ptq.financiera.exceptions.BusinessException;
-import com.co.ptq.financiera.exceptions.ErrorResponse;
+import com.co.ptq.financiera.exceptions.ResourceNotFoundException;
 import com.co.ptq.financiera.infrastructure.controllers.entities.TransaccionRequest;
 
 @RestController
@@ -24,12 +24,15 @@ public class TransaccionController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Transaccion> realizarTransaccion(@RequestBody TransaccionRequest request) {
+	public ResponseEntity<?> crearTransaccion(@RequestBody TransaccionRequest request) {
 		try {
 			Transaccion transaccion = realizarTransaccionUseCase.realizarTransaccion(request);
 			return ResponseEntity.status(HttpStatus.CREATED).body(transaccion);
-		} catch (BusinessException e) {
-			return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
+		} catch (BusinessException ex) {
+			return ResponseEntity.badRequest().body("Error de negocio: " + ex.getMessage());
+		} catch (ResourceNotFoundException ex) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Recurso no encontrado: " + ex.getMessage());
 		}
 	}
+
 }

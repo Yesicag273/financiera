@@ -45,10 +45,10 @@ public class CuentaService implements CuentaUseCase {
 	public Cuenta actualizarCuenta(Long id, Cuenta cuentaActualizada) {
 		Cuenta cuentaExistente = cuentaPort.obtenerCuentaPorId(id);
 		if (cuentaExistente == null) {
-			throw new ResourceNotFoundException("Producto no encontrado");
+			throw new ResourceNotFoundException("Cuenta no encontrado");
 		}
 
-		// Actualizar los campos permitidos del productoExistente
+		// Actualizar los campos permitidos del cuentaExistente
 		// (puedes agregar validaciones aquí si es necesario)
 
 		cuentaExistente.setFechaModificacion(LocalDateTime.now());
@@ -60,7 +60,7 @@ public class CuentaService implements CuentaUseCase {
 	public void activarDesactivarCuenta(Long id) {
 		Cuenta cuenta = cuentaPort.obtenerCuentaPorId(id);
 		if (cuenta == null) {
-			throw new ResourceNotFoundException("Producto no encontrado");
+			throw new ResourceNotFoundException("Cuenta no encontrada");
 		}
 
 		if (cuenta.getEstado() == EstadoCuenta.ACTIVA) {
@@ -93,12 +93,12 @@ public class CuentaService implements CuentaUseCase {
 	public Cuenta obtenerCuentaPorId(Long id) {
 		Cuenta cuenta = cuentaPort.obtenerCuentaPorId(id);
 		if (cuenta == null) {
-			throw new ResourceNotFoundException("Producto no encontrado");
+			throw new ResourceNotFoundException("Cuenta no encontrada");
 		}
 		return cuenta;
 	}
 
-	// ... otros métodos para consultar productos
+	// ... otros métodos para consultar cuentas
 
 	private String generarNumeroCuenta(TipoCuenta tipoCuenta) {
 		String prefijo = (tipoCuenta == TipoCuenta.AHORRO) ? "53" : "33";

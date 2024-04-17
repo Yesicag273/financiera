@@ -40,5 +40,4 @@ public class CuentaJpaAdapter implements CuentaPort {
 		return null;
 	}
 
-    // ... Implementación de los métodos de la interfaz ProductoPort
 }

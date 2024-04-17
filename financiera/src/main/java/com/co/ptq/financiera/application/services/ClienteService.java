@@ -51,8 +51,8 @@ public class ClienteService implements ClienteUseCase {
 
 	@Override
 	public void eliminarCliente(Long id) {
-		if (clienteTieneProductos(id)) {
-			throw new BusinessException("No se puede eliminar un cliente con productos vinculados");
+		if (clienteTieneCuentas(id)) {
+			throw new BusinessException("No se puede eliminar un cliente con cuentass vinculados");
 		}
 		clientePort.eliminarCliente(id);
 	}
@@ -79,10 +79,10 @@ public class ClienteService implements ClienteUseCase {
 		// Validar la longitud mínima de nombres y apellido
 	}
 
-	public boolean clienteTieneProductos(Long idCliente) {
+	public boolean clienteTieneCuentas(Long idCliente) {
 
 		return false;
-		// Verificar si el cliente tiene productos asociados usando el
+		// Verificar si el cliente tiene cuentas asociados usando el
 		// CuentaPort
 	}
 

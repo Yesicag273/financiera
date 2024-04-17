@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.co.ptq.financiera.domain.models.Transaccion;
 import com.co.ptq.financiera.domain.ports.out.TransaccionPort;
+import com.co.ptq.financiera.infrastructure.adapters.repositories.TransaccionRepository;
 
 @Repository
 public class TransaccionJpaAdapter implements TransaccionPort {
@@ -21,5 +22,4 @@ public class TransaccionJpaAdapter implements TransaccionPort {
 		return null;
 	}
 
-    // ... Implementación de los métodos de la interfaz TransaccionPort
 }

@@ -19,7 +19,7 @@ import org.springframework.data.annotation.Id;
 import com.co.ptq.financiera.exceptions.BusinessException;
 
 @Entity
-@Table(name = "productos")
+@Table(name = "cuentas")
 public class Cuenta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

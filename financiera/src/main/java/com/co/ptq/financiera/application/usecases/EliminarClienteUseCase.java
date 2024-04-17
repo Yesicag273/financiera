@@ -15,9 +15,9 @@ public class EliminarClienteUseCase {
     }
 
     public void eliminarCliente(Long id) {
-        // Verificar si el cliente tiene productos vinculados
-        if (clienteService.clienteTieneProductos(id)) {
-            throw new BusinessException("No se puede eliminar un cliente con productos vinculados");
+        // Verificar si el cliente tiene cuentas vinculados
+        if (clienteService.clienteTieneCuentas(id)) {
+            throw new BusinessException("No se puede eliminar un cliente con cuentas vinculadas");
         }
 
         // Eliminar el cliente

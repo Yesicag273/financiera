@@ -48,7 +48,7 @@ public class Cliente {
 	private LocalDateTime fechaModificacion;
 
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.REMOVE)
-	private List<Cuenta> productos;
+	private List<Cuenta> cuentas;
 
 	public Cliente(Long id, String tipoId, String numId, String nombres, String apellidos, String correo,
 			LocalDateTime fechaNacimiento, LocalDateTime fechaCreacion, LocalDateTime fechaModificacion) {

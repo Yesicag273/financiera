@@ -35,5 +35,4 @@ public class ClienteJpaAdapter implements ClientePort {
 		return clienteRepository.findById(id).orElse(null);
 	}
 
-	// ... otros métodos de la interfaz (opcional)
 }
