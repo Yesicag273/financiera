@@ -17,9 +17,6 @@ import org.springframework.data.annotation.Id;
 @Table(name = "clientes")
 public class Cliente {
 
-	public Cliente() {
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -64,6 +61,9 @@ public class Cliente {
 		this.fechaCreacion = fechaCreacion;
 		this.fechaModificacion = fechaModificacion;
 		this.cuentas = cuentas;
+	}
+
+	public Cliente() {
 	}
 
 	public List<Cuenta> getCuentas() {

@@ -15,6 +15,13 @@ public class TransaccionRequest {
 		return tipoTransaccion;
 	}
 
+	public TransaccionRequest(TipoTransaccion tipoTransaccion, BigDecimal monto, Long idCuenta, Long idCuentaDestino) {
+		this.tipoTransaccion = tipoTransaccion;
+		this.monto = monto;
+		this.idCuenta = idCuenta;
+		this.idCuentaDestino = idCuentaDestino;
+	}
+
 	public void setTipoTransaccion(TipoTransaccion tipoTransaccion) {
 		this.tipoTransaccion = tipoTransaccion;
 	}
