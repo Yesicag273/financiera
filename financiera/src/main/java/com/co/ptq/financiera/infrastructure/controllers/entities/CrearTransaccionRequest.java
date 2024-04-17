@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 import com.co.ptq.financiera.domain.models.TipoTransaccion;
 
-public class TransaccionDTO {
+public class CrearTransaccionRequest {
 	private Long id;
 	private TipoTransaccion tipoTransaccion;
 	private BigDecimal monto;
